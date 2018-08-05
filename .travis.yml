@@ -1,0 +1,15 @@
+sudo: required
+language: bash
+env:
+  global:
+  - LIVE_SERVICE=YOUR-ECS-SERVICE-NAME
+  - LIVE_CLUSTER_NAME=YOUR-ECS-CLUSTER-NAME
+  - LIVE_APP_NAME=YOUR-ECR-API-NAME
+  - AWS_URL=YOUR-AWS-ACCOUNT-ID.dkr.ecr.YOUR-AWS-REGION.amazonaws.com
+services:
+- docker
+script:
+- echo "No tests!"
+after_success:
+- docker-deploy/docker_push.sh
+- docker-deploy/ecs_deploy.sh
