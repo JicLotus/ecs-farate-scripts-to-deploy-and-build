@@ -1,21 +1,24 @@
+## First of all these files and configuration were based on:
 
-On docker_push.sh
+https://dev.mikamai.com/2016/05/17/continuous-delivery-with-travis-and-ecs/
 
-eval $(aws ecr get-login --no-include-email --region YOUR-AWS-REGION)
+## How to install:
 
+### On docker_push.sh change 'YOUR-AWS-REGION':
 
-On ecs_deploy.sh
-
-
-docker-deploy/ecs.sh -c $LIVE_CLUSTER_NAME -n $LIVE_SERVICE -i "$AWS_URL/$LIVE_APP_NAME:latest" -r YOUR-AWS-REGION -t 240
+    eval $(aws ecr get-login --no-include-email --region YOUR-AWS-REGION)
 
 
-On .travis.yml
+### The same on ecs_deploy.sh:
 
-- LIVE_SERVICE=YOUR-ECS-SERVICE-NAME
-- LIVE_CLUSTER_NAME=YOUR-ECS-CLUSTER-NAME
-- LIVE_APP_NAME=YOUR-ECR-API-NAME
-- AWS_URL=YOUR-AWS-ACCOUNT-ID.dkr.ecr.YOUR-AWS-REGION.amazonaws.com
+    docker-deploy/ecs.sh -c $LIVE_CLUSTER_NAME -n $LIVE_SERVICE -i "$AWS_URL/$LIVE_APP_NAME:latest" -r YOUR-AWS-REGION -t 240
+
+### On .travis.yml, put your aws configurations:
+
+    - LIVE_SERVICE=YOUR-ECS-SERVICE-NAME
+    - LIVE_CLUSTER_NAME=YOUR-ECS-CLUSTER-NAME
+    - LIVE_APP_NAME=YOUR-ECR-API-NAME
+    - AWS_URL=YOUR-AWS-ACCOUNT-ID.dkr.ecr.YOUR-AWS-REGION.amazonaws.com
 
 
 
