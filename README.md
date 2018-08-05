@@ -20,5 +20,11 @@ https://dev.mikamai.com/2016/05/17/continuous-delivery-with-travis-and-ecs/
     - LIVE_APP_NAME=YOUR-ECR-API-NAME
     - AWS_URL=YOUR-AWS-ACCOUNT-ID.dkr.ecr.YOUR-AWS-REGION.amazonaws.com
 
+### Put your AWS credentials on .travis file:
+
+Install travis on your OS, then execute the followings commands where travis file (.travis.yml) was located:
+
+    travis encrypt AWS_ACCESS_KEY_ID="HERE_PUT_YOUR_ACCESS_KEY_ID" --add
+    travis encrypt AWS_SECRET_ACCESS_KEY="HERE_PUT_YOUR_SECRET_ACCESS_KEY" --add
 
 
